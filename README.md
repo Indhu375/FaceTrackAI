@@ -4,7 +4,16 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/Tests-44%20Passing-brightgreen.svg)]()
 
-**FaceTrackAI** is a high-performance computer vision system for real-time face detection, multi-person temporal tracking, ArcFace biometric re-identification, entry/exit event management, and business intelligence foot-traffic analytics.
+**FaceTrackAI** is a real-time computer vision and visitor intelligence platform that performs multi-face detection, continuous temporal tracking, ArcFace biometric re-identification, entry/exit event management, and business intelligence foot-traffic analytics.
+
+---
+
+## 📹 Video Demonstration & Walkthrough
+
+> **[Click Here to Watch the Video Demonstration & Solution Walkthrough](https://www.youtube.com/watch?v=YOUR_VIDEO_ID_HERE)**  
+> *(Alternative Loom Link: [https://www.loom.com/share/YOUR_LOOM_ID_HERE](https://www.loom.com/share/YOUR_LOOM_ID_HERE))*
+> 
+> *Note: Please replace the placeholder link above with your recorded YouTube or Loom presentation link.*
 
 ---
 
@@ -12,160 +21,172 @@
 
 ```
                        Input Stream (Video File / RTSP Camera)
-                                         |
-                                         v
+                                         │
+                                         ▼
                  [Phase 1] Detection Layer: YOLOv8 Face Detector
                          (yolov8n-face.pt / Haar Cascade fallback)
-                                         |
-                                         v
+                                         │
+                                         ▼
                  [Phase 2] Tracking Layer: ByteTrack Multi-Object Tracker
                          (Kalman Filter + Hungarian IoU Association)
-                                         |
-                                         v
+                                         │
+                                         ▼
                  [Phase 1] Recognition Layer: InsightFace ArcFace
                          (512-d L2-normalized embeddings + cosine similarity)
-                                         |
-                                         v
+                                         │
+                                         ▼
                  [Phase 1] Identity Management: VisitorManager
                          (In-memory caching + persistent SQLite registry)
-                                         |
-                                         v
+                                         │
+                                         ▼
                  [Phase 2] Event Management: EventManager
                          (ENTRY / EXIT state machine + face snapshot archival)
-                                         |
-                                         v
+                                         │
+                                         ▼
                  [Phase 3] Analytics & Live Intelligence Suite
                          (Dwell time, hourly traffic, exports & Web Dashboard)
 ```
 
----
+### Module Data Flow & Responsibilities
 
-## 🚀 Key Features by Phase
-
-### Phase 1: Detection & Recognition
-- **YOLOv8 Nano Face Model**: High-accuracy, real-time bounding box detection optimized for CPU execution.
-- **InsightFace (ArcFace)**: 512-dimensional deep facial embeddings with dual-path alignment and feature extraction.
-- **Persistent Biometric Registry**: In-memory embedding cache synced with an embedded SQLite database.
-- **Configurable Thresholds**: Tunable detection confidence and cosine similarity cutoffs.
-
-### Phase 2: Multi-Object Tracking & Events
-- **ByteTrack Tracking**: Kalman filter motion prediction + SciPy Hungarian assignment (`linear_sum_assignment`).
-- **Temporary Track IDs vs. Persistent Face IDs**: Maintains continuity across occlusions and skips re-embedding once recognized.
-- **Automated Entry / Exit State Machine**:
-  - `ENTRY`: Captured on initial appearance; image saved to `logs/entries/`.
-  - `EXIT`: Triggered after `max_missed_frames` (default: 30 frames); image saved to `logs/exits/`.
-  - Duplicate event prevention and clean shutdown flush.
-
-### Phase 3: Analytics, Reporting & Live Dashboard
-- **Foot-Traffic Analytics Engine** (`src/analytics.py`):
-  - Total unique visitor count
-  - Dwell time / duration calculation (average, min, max per visitor)
-  - Hourly traffic distribution and peak occupancy
-  - Visitor retention & frequency analysis (single vs. returning visitors)
-- **Multi-Format Export**:
-  - `outputs/reports/visitors_summary_<timestamp>.csv`
-  - `outputs/reports/events_log_<timestamp>.csv`
-  - `outputs/reports/analytics_report_<timestamp>.json`
-  - `outputs/reports/visitor_report_<timestamp>.html` (Self-contained executive report)
-- **Live Web Dashboard** (`dashboard.py`):
-  - Real-time glassmorphic UI with auto-refresh polling (3s)
-  - Live KPI cards, interactive SVG/Canvas traffic charts, and searchable visitor directory
-  - Event stream with hoverable face thumbnail previews and one-click report exports.
+| Layer | Module | Responsibility |
+|---|---|---|
+| **Detection** | [`src/detector.py`](file:///f:/My%20Project/FaceTrackAI/src/detector.py) | YOLOv8 nano face detection running on configurable frame skips (`detection_skip_frames`). |
+| **Tracking** | [`src/tracker.py`](file:///f:/My%20Project/FaceTrackAI/src/tracker.py) | ByteTrack multi-object tracker using Kalman filter state prediction and SciPy Hungarian matching. |
+| **Recognition** | [`src/recognizer.py`](file:///f:/My%20Project/FaceTrackAI/src/recognizer.py) | InsightFace ArcFace 512-d normalized embeddings with dual-path alignment and fallback. |
+| **Visitor Registry** | [`src/visitor_manager.py`](file:///f:/My%20Project/FaceTrackAI/src/visitor_manager.py) | Assigns persistent Face IDs (`visitor_001`, `visitor_002`), manages in-memory embedding cache. |
+| **Event State** | [`src/event_manager.py`](file:///f:/My%20Project/FaceTrackAI/src/event_manager.py) | ENTRY / EXIT state machine, duplicate prevention, and face crop snapshot archival. |
+| **Analytics Engine**| [`src/analytics.py`](file:///f:/My%20Project/FaceTrackAI/src/analytics.py) | Dwell time computation, hourly traffic, retention rates, CSV/JSON/HTML report exports. |
+| **Web Dashboard** | [`src/dashboard.py`](file:///f:/My%20Project/FaceTrackAI/src/dashboard.py) | Zero-dependency real-time glassmorphic analytics dashboard with 3s live polling. |
+| **Persistence** | [`src/database.py`](file:///f:/My%20Project/FaceTrackAI/src/database.py) | SQLite storage with `visitors` and `events` tables. |
 
 ---
 
-## 📁 Repository Structure
+## 🧠 AI Planning Document
 
-```
-FaceTrackAI/
-├── app.py                     # Main application entry point (CLI & Video Pipeline)
-├── dashboard.py               # Stand-alone Web Dashboard launcher
-├── config.json                # Central system configuration
-├── requirements.txt           # Python dependencies
-├── yolov8n-face.pt            # Downloaded YOLO face detection weights
-├── data/
-│   └── visitors.db            # SQLite database (visitors & events)
-├── docs/
-│   ├── ai_planning.md         # Architecture and design documentation
-│   ├── architecture.md        # Pipeline dataflow specifications
-│   └── compute_estimation.md  # CPU/GPU compute sizing
-├── logs/
-│   ├── events.log             # Structured application log
-│   ├── entries/               # Saved ENTRY face snapshots
-│   └── exits/                 # Saved EXIT face snapshots
-├── outputs/
-│   ├── annotated/             # Rendered preview videos with HUD overlay
-│   └── reports/               # Exported CSV, JSON, and HTML reports
-├── src/
-│   ├── analytics.py           # Dwell time and reporting engine (Phase 3)
-│   ├── dashboard.py           # Zero-dependency HTTP server & web app (Phase 3)
-│   ├── database.py            # SQLite schema and data access layer (Phase 1)
-│   ├── detector.py            # YOLOv8 face detector wrapper (Phase 1)
-│   ├── event_manager.py       # ENTRY/EXIT state machine and snapshot saver (Phase 2)
-│   ├── logger.py              # Structured logging utility
-│   ├── pipeline.py            # End-to-end processing pipeline orchestrator (Phase 2)
-│   ├── recognizer.py          # InsightFace ArcFace embedding generator (Phase 1)
-│   ├── tracker.py             # ByteTrack + KalmanBoxTracker implementation (Phase 2)
-│   ├── video_processor.py     # Frame I/O, display, and video writer loop
-│   └── visitor_manager.py     # Identity decision layer and DB sync (Phase 1)
-└── tests/
-    ├── test_analytics.py      # Analytics & reporting unit tests (5 tests)
-    ├── test_config.py         # Config validation unit tests (8 tests)
-    ├── test_database.py       # SQLite CRUD & events unit tests (9 tests)
-    ├── test_events.py         # EventManager state machine unit tests (4 tests)
-    ├── test_matching.py       # ArcFace embedding & cosine similarity tests (10 tests)
-    ├── test_pipeline.py       # Pipeline integration unit tests (1 test)
-    └── test_tracker.py        # ByteTrack & Kalman filter unit tests (7 tests)
-```
+### 1. Problem Understanding
+Surveillance and retail environments require tracking individuals across space and time to distinguish between first-time and returning visitors without double-counting, log arrivals and departures, compute dwell times, and provide actionable foot-traffic intelligence.
+
+### 2. Model Selection Rationale
+- **YOLOv8 Nano (`yolov8n-face.pt`)**: Purpose-trained for face detection. Nano architecture ensures high FPS execution on standard CPU hardware without mandatory GPU requirements.
+- **InsightFace ArcFace (`buffalo_l`)**: Industry standard for deep facial recognition. Generates 512-dimensional unit vectors where cosine similarity directly measures identity equivalence. Robust to pose variations and lighting changes.
+- **ByteTrack Tracking**: Operates by associating both high-confidence and low-confidence detection boxes across frames using Kalman motion estimation and IoU matching. Eliminates ID switches during brief occlusions.
+- **SciPy Linear Assignment**: Built using pure SciPy (`scipy.optimize.linear_sum_assignment`), avoiding fragile C++ compilation issues (such as `lap` on Windows).
+
+### 3. Identity & Tracking Strategy
+- **Track ID $\neq$ Face ID**:
+  - `track_id` is an ephemeral integer (e.g. `1`, `2`, `3`) maintaining spatial continuity frame-to-frame.
+  - `face_id` is a persistent string (e.g. `visitor_001`) stored in the database.
+- **Performance Optimization**: Once a `track_id` is matched with a confirmed `face_id`, computationally intensive ArcFace feature extraction is skipped on subsequent frames for that track, yielding massive CPU efficiency.
+
+### 4. Entry / Exit State Machine
+- **ENTRY**: Triggered on first confirmed recognition of a visitor trajectory; persists an entry snapshot image to `logs/entries/` and inserts a database row.
+- **ACTIVE**: Visitor remains active; updates `last_seen` timestamp without generating redundant entry events.
+- **EXIT**: Triggered when a track has been lost for `max_missed_frames` (default: 30 frames); persists an exit snapshot image to `logs/exits/` and inserts a database row.
+- **FLUSH**: On stream termination or graceful shutdown, all currently active visitors are closed with an exit event.
 
 ---
 
-## ⚡ Quick Start Guide
+## ⚙️ Assumptions Made
 
-### 1. Installation
+1. **Camera Angle & Visibility**:
+   - The input video or RTSP stream provides a frontal or semi-profile view of human faces with minimum resolution of at least $40 \times 40$ pixels for reliable ArcFace feature extraction.
+2. **Biometric Similarity Cutoff**:
+   - Cosine similarity threshold of `0.5` is assumed as the operational balance between False Accepts and False Rejects. Faces with similarity $\ge 0.5$ are identified as the same visitor; below $0.5$ triggers registration of a new visitor.
+3. **Session Expiry & Dwell Time**:
+   - If a person is undetected for more than `max_missed_frames` (default: 30 frames $\approx$ 1–2 seconds depending on frame rate), they are assumed to have left the camera field of view, closing their visit session. If they return later, a new visit session (ENTRY) is recorded under their existing persistent `face_id`.
+4. **Hardware & Environment**:
+   - The system is architected for CPU execution using ONNX Runtime and OpenCV, but automatically leverages CUDA if available.
+5. **Storage & Persistence**:
+   - SQLite provides single-file local persistence with zero configuration. Schema design follows modular repository patterns to allow painless migration to PostgreSQL.
+
+---
+
+## 🛠️ Setup Instructions
+
+### 1. Prerequisites
+- **Python 3.10+** (Python 3.10, 3.11, 3.12, or 3.13)
+- Windows, macOS, or Linux
+
+### 2. Installation
 
 ```bash
 # Clone the repository
 git clone https://github.com/Indhu375/FaceTrackAI.git
 cd FaceTrackAI
 
-# Install dependencies
+# Create and activate a virtual environment (recommended)
+python -m venv venv
+# On Windows:
+venv\Scripts\activate
+# On Linux/macOS:
+source venv/bin/activate
+
+# Install required dependencies
 pip install -r requirements.txt
 ```
 
-### 2. Run the Main Video Tracking Application
-
-```bash
-# Process default video (sample_video/input.mp4)
-python app.py
-
-# Process custom video or RTSP camera stream
-python app.py --source path/to/video.mp4
-python app.py --source "rtsp://user:pass@192.168.1.100:554/stream"
-```
-
-### 3. Launch the Live Analytics Web Dashboard
-
-```bash
-# Launch on default port 8000
-python dashboard.py
-
-# Open your browser at:
-# http://127.0.0.1:8000
-```
-
-### 4. Generate Analytics Reports (CLI)
-
-```bash
-# Compute metrics and generate CSV/JSON/HTML reports into outputs/reports/
-python app.py --report
-```
+### 3. Model Weights
+- **YOLOv8 Face Model**: The pre-trained model `yolov8n-face.pt` is already provided in the repository root.
+- **InsightFace Model Pack**: The `buffalo_l` ArcFace bundle auto-downloads on first run to `~/.insightface/models/buffalo_l/`.
 
 ---
 
-## 🧪 Testing
+## 🚀 How to Run
 
-The test suite includes **44 automated unit tests** covering configuration, database operations, recognition matching, tracking, event handling, and analytics:
+### Mode 1: Main Video Tracking Pipeline
+Process the sample video or live RTSP camera stream:
+
+```bash
+# Run with default config (sample_video/input.mp4)
+python app.py
+
+# Run with a custom video source or RTSP stream
+python app.py --source "sample_video/input.mp4"
+python app.py --source "rtsp://user:pass@192.168.1.100:554/stream"
+```
+*Outputs:*
+- Live preview window with bounding boxes (`T:<track_id> | <visitor_id>`) and HUD dashboard.
+- Annotated output video saved to `outputs/annotated/demo_output.mp4`.
+- Saved face crops in `logs/entries/` and `logs/exits/`.
+- Automated analytics report generated upon completion into `outputs/reports/`.
+
+---
+
+### Mode 2: Live Analytics Web Dashboard
+Launch the standalone web dashboard:
+
+```bash
+python dashboard.py
+```
+Open your browser at: **`http://127.0.0.1:8000`**
+
+*Features:*
+- **Live Sync**: Auto-refreshes every 3 seconds to reflect real-time camera tracking.
+- **Interactive KPIs**: Total Unique Visitors, Active Right Now, Average Dwell Time, Event Counts.
+- **Hourly Traffic Chart**: Zero-dependency visual canvas chart.
+- **Visitor Directory & Event Stream**: Searchable tables with hoverable face thumbnails.
+- **One-Click Export**: Download Visitors CSV, Events CSV, and Analytics JSON directly.
+
+---
+
+### Mode 3: Generate Analytics Reports (CLI)
+Generate executive reports directly from the database without opening a video stream:
+
+```bash
+python app.py --report
+```
+*Generated in `outputs/reports/`:*
+- `visitors_summary_<timestamp>.csv`
+- `events_log_<timestamp>.csv`
+- `analytics_report_<timestamp>.json`
+- `visitor_report_<timestamp>.html` (Interactive standalone visual report)
+
+---
+
+## 🧪 Running Unit Tests
+
+Run the full automated test suite (44 unit tests):
 
 ```bash
 python -m pytest tests/ -v
@@ -173,7 +194,7 @@ python -m pytest tests/ -v
 
 ---
 
-## ⚙️ Configuration (`config.json`)
+## 📋 Sample `config.json` Structure
 
 ```json
 {
@@ -206,8 +227,18 @@ python -m pytest tests/ -v
 }
 ```
 
+### Parameter Explanations:
+- `video_source`: Path to local MP4/AVI video file or RTSP stream URL.
+- `detection.model`: Path to YOLO weights (`yolov8n-face.pt`).
+- `detection.confidence_threshold`: Minimum confidence score (0.0 – 1.0) to register a face box.
+- `detection.detection_skip_frames`: Detection runs every $N$ frames to save CPU cycles.
+- `recognition.similarity_threshold`: Cosine similarity cutoff (0.0 – 1.0) for matching ArcFace embeddings.
+- `tracking.max_missed_frames`: Consecutive unobserved frames before a track is closed and an EXIT event is fired.
+- `database.path`: Location of SQLite database file.
+- `storage.entry_directory` / `exit_directory`: Target folders for saved face crop images.
+- `display.show_window`: Set `true` to show live OpenCV preview window (`q` to quit).
+- `display.save_output_video`: Set `true` to record annotated output video to `outputs/annotated/demo_output.mp4`.
+
 ---
 
-## 📜 License
-
-MIT License. Developed for intelligent surveillance and automated visitor analytics.
+This project is a part of a hackathon run by https://katomaran.com
