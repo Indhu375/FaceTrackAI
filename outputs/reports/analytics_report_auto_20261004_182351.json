@@ -1,0 +1,720 @@
+{
+  "summary": {
+    "generated_at": "2026-10-04 18:23:51",
+    "total_unique_visitors": 56,
+    "total_events": 64,
+    "total_entries": 34,
+    "total_exits": 30,
+    "avg_dwell_time_seconds": 7.1,
+    "min_dwell_time_seconds": 2.0,
+    "max_dwell_time_seconds": 17.0,
+    "avg_dwell_time_formatted": "7s"
+  },
+  "hourly_traffic": {
+    "00:00": 0,
+    "01:00": 0,
+    "02:00": 0,
+    "03:00": 0,
+    "04:00": 0,
+    "05:00": 0,
+    "06:00": 0,
+    "07:00": 0,
+    "08:00": 0,
+    "09:00": 0,
+    "10:00": 0,
+    "11:00": 0,
+    "12:00": 0,
+    "13:00": 0,
+    "14:00": 0,
+    "15:00": 0,
+    "16:00": 0,
+    "17:00": 12,
+    "18:00": 52,
+    "19:00": 0,
+    "20:00": 0,
+    "21:00": 0,
+    "22:00": 0,
+    "23:00": 0
+  },
+  "retention": {
+    "single_visit_visitors": 18,
+    "returning_visitors": 6,
+    "return_rate_percentage": 25.0
+  },
+  "visitor_dwells": {
+    "visitor_001": [
+      {
+        "entry_time": "2026-10-04 17:49:42",
+        "exit_time": "2026-10-04 17:49:52",
+        "dwell_seconds": 10.0,
+        "dwell_formatted": "10s",
+        "entry_image": "logs/entries\\visitor_001_entry_2026-10-04_17-49-42.jpg",
+        "exit_image": "logs/exits\\visitor_001_exit_flush_2026-10-04_17-49-52.jpg"
+      },
+      {
+        "entry_time": "2026-10-04 18:20:55",
+        "exit_time": "2026-10-04 18:21:05",
+        "dwell_seconds": 10.0,
+        "dwell_formatted": "10s",
+        "entry_image": "logs/entries\\visitor_001_entry_2026-10-04_18-20-55.jpg",
+        "exit_image": "logs/exits\\visitor_001_exit_flush_2026-10-04_18-21-05.jpg"
+      }
+    ],
+    "visitor_002": [
+      {
+        "entry_time": "2026-10-04 17:49:42",
+        "exit_time": "2026-10-04 17:49:52",
+        "dwell_seconds": 10.0,
+        "dwell_formatted": "10s",
+        "entry_image": "logs/entries\\visitor_002_entry_2026-10-04_17-49-42.jpg",
+        "exit_image": "logs/exits\\visitor_002_exit_flush_2026-10-04_17-49-52.jpg"
+      },
+      {
+        "entry_time": "2026-10-04 18:20:56",
+        "exit_time": "2026-10-04 18:21:05",
+        "dwell_seconds": 9.0,
+        "dwell_formatted": "9s",
+        "entry_image": "logs/entries\\visitor_002_entry_2026-10-04_18-20-56.jpg",
+        "exit_image": "logs/exits\\visitor_002_exit_flush_2026-10-04_18-21-05.jpg"
+      }
+    ],
+    "visitor_003": [
+      {
+        "entry_time": "2026-10-04 17:49:43",
+        "exit_time": "2026-10-04 17:49:52",
+        "dwell_seconds": 9.0,
+        "dwell_formatted": "9s",
+        "entry_image": "logs/entries\\visitor_003_entry_2026-10-04_17-49-43.jpg",
+        "exit_image": "logs/exits\\visitor_003_exit_flush_2026-10-04_17-49-52.jpg"
+      },
+      {
+        "entry_time": "2026-10-04 18:20:56",
+        "exit_time": "2026-10-04 18:21:05",
+        "dwell_seconds": 9.0,
+        "dwell_formatted": "9s",
+        "entry_image": "logs/entries\\visitor_003_entry_2026-10-04_18-20-56.jpg",
+        "exit_image": "logs/exits\\visitor_003_exit_flush_2026-10-04_18-21-05.jpg"
+      }
+    ],
+    "visitor_006": [
+      {
+        "entry_time": "2026-10-04 17:49:44",
+        "exit_time": "2026-10-04 17:49:52",
+        "dwell_seconds": 8.0,
+        "dwell_formatted": "8s",
+        "entry_image": "logs/entries\\visitor_006_entry_2026-10-04_17-49-44.jpg",
+        "exit_image": "logs/exits\\visitor_006_exit_flush_2026-10-04_17-49-52.jpg"
+      },
+      {
+        "entry_time": "2026-10-04 18:20:57",
+        "exit_time": "2026-10-04 18:21:05",
+        "dwell_seconds": 8.0,
+        "dwell_formatted": "8s",
+        "entry_image": "logs/entries\\visitor_006_entry_2026-10-04_18-20-57.jpg",
+        "exit_image": "logs/exits\\visitor_006_exit_flush_2026-10-04_18-21-05.jpg"
+      }
+    ],
+    "visitor_037": [
+      {
+        "entry_time": "2026-10-04 18:22:44",
+        "exit_time": "2026-10-04 18:22:55",
+        "dwell_seconds": 11.0,
+        "dwell_formatted": "11s",
+        "entry_image": "logs/entries\\visitor_037_entry_2026-10-04_18-22-44.jpg",
+        "exit_image": "logs/exits\\visitor_037_exit_2026-10-04_18-22-55.jpg"
+      }
+    ],
+    "visitor_038": [
+      {
+        "entry_time": "2026-10-04 18:22:52",
+        "exit_time": "2026-10-04 18:22:55",
+        "dwell_seconds": 3.0,
+        "dwell_formatted": "3s",
+        "entry_image": "logs/entries\\visitor_038_entry_2026-10-04_18-22-52.jpg",
+        "exit_image": "logs/exits\\visitor_038_exit_2026-10-04_18-22-55.jpg"
+      }
+    ],
+    "visitor_039": [
+      {
+        "entry_time": "2026-10-04 18:22:53",
+        "exit_time": "2026-10-04 18:22:55",
+        "dwell_seconds": 2.0,
+        "dwell_formatted": "2s",
+        "entry_image": "logs/entries\\visitor_039_entry_2026-10-04_18-22-53.jpg",
+        "exit_image": "logs/exits\\visitor_039_exit_2026-10-04_18-22-55.jpg"
+      },
+      {
+        "entry_time": "2026-10-04 18:23:31",
+        "exit_time": "2026-10-04 18:23:35",
+        "dwell_seconds": 4.0,
+        "dwell_formatted": "4s",
+        "entry_image": "logs/entries\\visitor_039_entry_2026-10-04_18-23-31.jpg",
+        "exit_image": "logs/exits\\visitor_039_exit_2026-10-04_18-23-35.jpg"
+      }
+    ],
+    "visitor_040": [
+      {
+        "entry_time": "2026-10-04 18:22:53",
+        "exit_time": "2026-10-04 18:22:56",
+        "dwell_seconds": 3.0,
+        "dwell_formatted": "3s",
+        "entry_image": "logs/entries\\visitor_040_entry_2026-10-04_18-22-53.jpg",
+        "exit_image": "logs/exits\\visitor_040_exit_2026-10-04_18-22-56.jpg"
+      }
+    ],
+    "visitor_041": [
+      {
+        "entry_time": "2026-10-04 18:23:14",
+        "exit_time": "2026-10-04 18:23:17",
+        "dwell_seconds": 3.0,
+        "dwell_formatted": "3s",
+        "entry_image": "logs/entries\\visitor_041_entry_2026-10-04_18-23-14.jpg",
+        "exit_image": "logs/exits\\visitor_041_exit_2026-10-04_18-23-17.jpg"
+      }
+    ],
+    "visitor_042": [
+      {
+        "entry_time": "2026-10-04 18:23:16",
+        "exit_time": "2026-10-04 18:23:20",
+        "dwell_seconds": 4.0,
+        "dwell_formatted": "4s",
+        "entry_image": "logs/entries\\visitor_042_entry_2026-10-04_18-23-16.jpg",
+        "exit_image": "logs/exits\\visitor_042_exit_2026-10-04_18-23-20.jpg"
+      },
+      {
+        "entry_time": "2026-10-04 18:23:22",
+        "exit_time": "2026-10-04 18:23:26",
+        "dwell_seconds": 4.0,
+        "dwell_formatted": "4s",
+        "entry_image": "logs/entries\\visitor_042_entry_2026-10-04_18-23-22.jpg",
+        "exit_image": "logs/exits\\visitor_042_exit_2026-10-04_18-23-26.jpg"
+      }
+    ],
+    "visitor_043": [
+      {
+        "entry_time": "2026-10-04 18:23:17",
+        "exit_time": "2026-10-04 18:23:23",
+        "dwell_seconds": 6.0,
+        "dwell_formatted": "6s",
+        "entry_image": "logs/entries\\visitor_043_entry_2026-10-04_18-23-17.jpg",
+        "exit_image": "logs/exits\\visitor_043_exit_2026-10-04_18-23-23.jpg"
+      }
+    ],
+    "visitor_044": [
+      {
+        "entry_time": "2026-10-04 18:23:19",
+        "exit_time": "2026-10-04 18:23:24",
+        "dwell_seconds": 5.0,
+        "dwell_formatted": "5s",
+        "entry_image": "logs/entries\\visitor_044_entry_2026-10-04_18-23-19.jpg",
+        "exit_image": "logs/exits\\visitor_044_exit_2026-10-04_18-23-24.jpg"
+      }
+    ],
+    "visitor_045": [
+      {
+        "entry_time": "2026-10-04 18:23:23",
+        "exit_time": "2026-10-04 18:23:27",
+        "dwell_seconds": 4.0,
+        "dwell_formatted": "4s",
+        "entry_image": "logs/entries\\visitor_045_entry_2026-10-04_18-23-23.jpg",
+        "exit_image": "logs/exits\\visitor_045_exit_2026-10-04_18-23-27.jpg"
+      }
+    ],
+    "visitor_046": [
+      {
+        "entry_time": "2026-10-04 18:23:24",
+        "exit_time": "2026-10-04 18:23:31",
+        "dwell_seconds": 7.0,
+        "dwell_formatted": "7s",
+        "entry_image": "logs/entries\\visitor_046_entry_2026-10-04_18-23-24.jpg",
+        "exit_image": "logs/exits\\visitor_046_exit_2026-10-04_18-23-31.jpg"
+      }
+    ],
+    "visitor_047": [
+      {
+        "entry_time": "2026-10-04 18:23:24",
+        "exit_time": "2026-10-04 18:23:41",
+        "dwell_seconds": 17.0,
+        "dwell_formatted": "17s",
+        "entry_image": "logs/entries\\visitor_047_entry_2026-10-04_18-23-24.jpg",
+        "exit_image": "logs/exits\\visitor_047_exit_2026-10-04_18-23-41.jpg"
+      }
+    ],
+    "visitor_048": [
+      {
+        "entry_time": "2026-10-04 18:23:28",
+        "exit_time": "2026-10-04 18:23:34",
+        "dwell_seconds": 6.0,
+        "dwell_formatted": "6s",
+        "entry_image": "logs/entries\\visitor_048_entry_2026-10-04_18-23-28.jpg",
+        "exit_image": "logs/exits\\visitor_048_exit_2026-10-04_18-23-34.jpg"
+      }
+    ],
+    "visitor_049": [
+      {
+        "entry_time": "2026-10-04 18:23:30",
+        "exit_time": "2026-10-04 18:23:34",
+        "dwell_seconds": 4.0,
+        "dwell_formatted": "4s",
+        "entry_image": "logs/entries\\visitor_049_entry_2026-10-04_18-23-30.jpg",
+        "exit_image": "logs/exits\\visitor_049_exit_2026-10-04_18-23-34.jpg"
+      }
+    ],
+    "visitor_050": [
+      {
+        "entry_time": "2026-10-04 18:23:31",
+        "exit_time": "2026-10-04 18:23:36",
+        "dwell_seconds": 5.0,
+        "dwell_formatted": "5s",
+        "entry_image": "logs/entries\\visitor_050_entry_2026-10-04_18-23-31.jpg",
+        "exit_image": "logs/exits\\visitor_050_exit_2026-10-04_18-23-36.jpg"
+      }
+    ],
+    "visitor_051": [
+      {
+        "entry_time": "2026-10-04 18:23:32",
+        "exit_time": "2026-10-04 18:23:42",
+        "dwell_seconds": 10.0,
+        "dwell_formatted": "10s",
+        "entry_image": "logs/entries\\visitor_051_entry_2026-10-04_18-23-32.jpg",
+        "exit_image": "logs/exits\\visitor_051_exit_2026-10-04_18-23-42.jpg"
+      }
+    ],
+    "visitor_052": [
+      {
+        "entry_time": "2026-10-04 18:23:33",
+        "exit_time": "2026-10-04 18:23:38",
+        "dwell_seconds": 5.0,
+        "dwell_formatted": "5s",
+        "entry_image": "logs/entries\\visitor_052_entry_2026-10-04_18-23-33.jpg",
+        "exit_image": "logs/exits\\visitor_052_exit_2026-10-04_18-23-38.jpg"
+      }
+    ],
+    "visitor_053": [
+      {
+        "entry_time": "2026-10-04 18:23:36",
+        "exit_time": "2026-10-04 18:23:44",
+        "dwell_seconds": 8.0,
+        "dwell_formatted": "8s",
+        "entry_image": "logs/entries\\visitor_053_entry_2026-10-04_18-23-36.jpg",
+        "exit_image": "logs/exits\\visitor_053_exit_2026-10-04_18-23-44.jpg"
+      }
+    ],
+    "visitor_054": [
+      {
+        "entry_time": "2026-10-04 18:23:38",
+        "exit_time": "2026-10-04 18:23:51",
+        "dwell_seconds": 13.0,
+        "dwell_formatted": "13s",
+        "entry_image": "logs/entries\\visitor_054_entry_2026-10-04_18-23-38.jpg",
+        "exit_image": "logs/exits\\visitor_054_exit_flush_2026-10-04_18-23-51.jpg"
+      }
+    ],
+    "visitor_055": [
+      {
+        "entry_time": "2026-10-04 18:23:39",
+        "exit_time": "2026-10-04 18:23:51",
+        "dwell_seconds": 12.0,
+        "dwell_formatted": "12s",
+        "entry_image": "logs/entries\\visitor_055_entry_2026-10-04_18-23-39.jpg",
+        "exit_image": "logs/exits\\visitor_055_exit_flush_2026-10-04_18-23-51.jpg"
+      }
+    ],
+    "visitor_056": [
+      {
+        "entry_time": "2026-10-04 18:23:48",
+        "exit_time": "2026-10-04 18:23:51",
+        "dwell_seconds": 3.0,
+        "dwell_formatted": "3s",
+        "entry_image": "logs/entries\\visitor_056_entry_2026-10-04_18-23-48.jpg",
+        "exit_image": "logs/exits\\visitor_056_exit_flush_2026-10-04_18-23-51.jpg"
+      }
+    ]
+  },
+  "events": [
+    {
+      "face_id": "visitor_001",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 17:20:55",
+      "image_path": "logs/entries\\visitor_001_entry_2026-10-04_17-20-55.jpg"
+    },
+    {
+      "face_id": "visitor_002",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 17:20:56",
+      "image_path": "logs/entries\\visitor_002_entry_2026-10-04_17-20-56.jpg"
+    },
+    {
+      "face_id": "visitor_003",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 17:20:57",
+      "image_path": "logs/entries\\visitor_003_entry_2026-10-04_17-20-57.jpg"
+    },
+    {
+      "face_id": "visitor_006",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 17:20:59",
+      "image_path": "logs/entries\\visitor_006_entry_2026-10-04_17-20-59.jpg"
+    },
+    {
+      "face_id": "visitor_001",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 17:49:42",
+      "image_path": "logs/entries\\visitor_001_entry_2026-10-04_17-49-42.jpg"
+    },
+    {
+      "face_id": "visitor_002",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 17:49:42",
+      "image_path": "logs/entries\\visitor_002_entry_2026-10-04_17-49-42.jpg"
+    },
+    {
+      "face_id": "visitor_003",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 17:49:43",
+      "image_path": "logs/entries\\visitor_003_entry_2026-10-04_17-49-43.jpg"
+    },
+    {
+      "face_id": "visitor_006",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 17:49:44",
+      "image_path": "logs/entries\\visitor_006_entry_2026-10-04_17-49-44.jpg"
+    },
+    {
+      "face_id": "visitor_001",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 17:49:52",
+      "image_path": "logs/exits\\visitor_001_exit_flush_2026-10-04_17-49-52.jpg"
+    },
+    {
+      "face_id": "visitor_002",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 17:49:52",
+      "image_path": "logs/exits\\visitor_002_exit_flush_2026-10-04_17-49-52.jpg"
+    },
+    {
+      "face_id": "visitor_003",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 17:49:52",
+      "image_path": "logs/exits\\visitor_003_exit_flush_2026-10-04_17-49-52.jpg"
+    },
+    {
+      "face_id": "visitor_006",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 17:49:52",
+      "image_path": "logs/exits\\visitor_006_exit_flush_2026-10-04_17-49-52.jpg"
+    },
+    {
+      "face_id": "visitor_001",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:20:55",
+      "image_path": "logs/entries\\visitor_001_entry_2026-10-04_18-20-55.jpg"
+    },
+    {
+      "face_id": "visitor_002",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:20:56",
+      "image_path": "logs/entries\\visitor_002_entry_2026-10-04_18-20-56.jpg"
+    },
+    {
+      "face_id": "visitor_003",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:20:56",
+      "image_path": "logs/entries\\visitor_003_entry_2026-10-04_18-20-56.jpg"
+    },
+    {
+      "face_id": "visitor_006",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:20:57",
+      "image_path": "logs/entries\\visitor_006_entry_2026-10-04_18-20-57.jpg"
+    },
+    {
+      "face_id": "visitor_001",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:21:05",
+      "image_path": "logs/exits\\visitor_001_exit_flush_2026-10-04_18-21-05.jpg"
+    },
+    {
+      "face_id": "visitor_002",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:21:05",
+      "image_path": "logs/exits\\visitor_002_exit_flush_2026-10-04_18-21-05.jpg"
+    },
+    {
+      "face_id": "visitor_003",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:21:05",
+      "image_path": "logs/exits\\visitor_003_exit_flush_2026-10-04_18-21-05.jpg"
+    },
+    {
+      "face_id": "visitor_006",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:21:05",
+      "image_path": "logs/exits\\visitor_006_exit_flush_2026-10-04_18-21-05.jpg"
+    },
+    {
+      "face_id": "visitor_037",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:22:44",
+      "image_path": "logs/entries\\visitor_037_entry_2026-10-04_18-22-44.jpg"
+    },
+    {
+      "face_id": "visitor_038",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:22:52",
+      "image_path": "logs/entries\\visitor_038_entry_2026-10-04_18-22-52.jpg"
+    },
+    {
+      "face_id": "visitor_039",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:22:53",
+      "image_path": "logs/entries\\visitor_039_entry_2026-10-04_18-22-53.jpg"
+    },
+    {
+      "face_id": "visitor_040",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:22:53",
+      "image_path": "logs/entries\\visitor_040_entry_2026-10-04_18-22-53.jpg"
+    },
+    {
+      "face_id": "visitor_037",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:22:55",
+      "image_path": "logs/exits\\visitor_037_exit_2026-10-04_18-22-55.jpg"
+    },
+    {
+      "face_id": "visitor_038",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:22:55",
+      "image_path": "logs/exits\\visitor_038_exit_2026-10-04_18-22-55.jpg"
+    },
+    {
+      "face_id": "visitor_039",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:22:55",
+      "image_path": "logs/exits\\visitor_039_exit_2026-10-04_18-22-55.jpg"
+    },
+    {
+      "face_id": "visitor_040",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:22:56",
+      "image_path": "logs/exits\\visitor_040_exit_2026-10-04_18-22-56.jpg"
+    },
+    {
+      "face_id": "visitor_041",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:23:14",
+      "image_path": "logs/entries\\visitor_041_entry_2026-10-04_18-23-14.jpg"
+    },
+    {
+      "face_id": "visitor_042",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:23:16",
+      "image_path": "logs/entries\\visitor_042_entry_2026-10-04_18-23-16.jpg"
+    },
+    {
+      "face_id": "visitor_041",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:23:17",
+      "image_path": "logs/exits\\visitor_041_exit_2026-10-04_18-23-17.jpg"
+    },
+    {
+      "face_id": "visitor_043",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:23:17",
+      "image_path": "logs/entries\\visitor_043_entry_2026-10-04_18-23-17.jpg"
+    },
+    {
+      "face_id": "visitor_044",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:23:19",
+      "image_path": "logs/entries\\visitor_044_entry_2026-10-04_18-23-19.jpg"
+    },
+    {
+      "face_id": "visitor_042",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:23:20",
+      "image_path": "logs/exits\\visitor_042_exit_2026-10-04_18-23-20.jpg"
+    },
+    {
+      "face_id": "visitor_042",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:23:22",
+      "image_path": "logs/entries\\visitor_042_entry_2026-10-04_18-23-22.jpg"
+    },
+    {
+      "face_id": "visitor_045",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:23:23",
+      "image_path": "logs/entries\\visitor_045_entry_2026-10-04_18-23-23.jpg"
+    },
+    {
+      "face_id": "visitor_043",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:23:23",
+      "image_path": "logs/exits\\visitor_043_exit_2026-10-04_18-23-23.jpg"
+    },
+    {
+      "face_id": "visitor_044",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:23:24",
+      "image_path": "logs/exits\\visitor_044_exit_2026-10-04_18-23-24.jpg"
+    },
+    {
+      "face_id": "visitor_046",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:23:24",
+      "image_path": "logs/entries\\visitor_046_entry_2026-10-04_18-23-24.jpg"
+    },
+    {
+      "face_id": "visitor_047",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:23:24",
+      "image_path": "logs/entries\\visitor_047_entry_2026-10-04_18-23-24.jpg"
+    },
+    {
+      "face_id": "visitor_042",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:23:26",
+      "image_path": "logs/exits\\visitor_042_exit_2026-10-04_18-23-26.jpg"
+    },
+    {
+      "face_id": "visitor_045",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:23:27",
+      "image_path": "logs/exits\\visitor_045_exit_2026-10-04_18-23-27.jpg"
+    },
+    {
+      "face_id": "visitor_048",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:23:28",
+      "image_path": "logs/entries\\visitor_048_entry_2026-10-04_18-23-28.jpg"
+    },
+    {
+      "face_id": "visitor_049",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:23:30",
+      "image_path": "logs/entries\\visitor_049_entry_2026-10-04_18-23-30.jpg"
+    },
+    {
+      "face_id": "visitor_050",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:23:31",
+      "image_path": "logs/entries\\visitor_050_entry_2026-10-04_18-23-31.jpg"
+    },
+    {
+      "face_id": "visitor_039",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:23:31",
+      "image_path": "logs/entries\\visitor_039_entry_2026-10-04_18-23-31.jpg"
+    },
+    {
+      "face_id": "visitor_046",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:23:31",
+      "image_path": "logs/exits\\visitor_046_exit_2026-10-04_18-23-31.jpg"
+    },
+    {
+      "face_id": "visitor_051",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:23:32",
+      "image_path": "logs/entries\\visitor_051_entry_2026-10-04_18-23-32.jpg"
+    },
+    {
+      "face_id": "visitor_052",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:23:33",
+      "image_path": "logs/entries\\visitor_052_entry_2026-10-04_18-23-33.jpg"
+    },
+    {
+      "face_id": "visitor_048",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:23:34",
+      "image_path": "logs/exits\\visitor_048_exit_2026-10-04_18-23-34.jpg"
+    },
+    {
+      "face_id": "visitor_049",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:23:34",
+      "image_path": "logs/exits\\visitor_049_exit_2026-10-04_18-23-34.jpg"
+    },
+    {
+      "face_id": "visitor_039",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:23:35",
+      "image_path": "logs/exits\\visitor_039_exit_2026-10-04_18-23-35.jpg"
+    },
+    {
+      "face_id": "visitor_053",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:23:36",
+      "image_path": "logs/entries\\visitor_053_entry_2026-10-04_18-23-36.jpg"
+    },
+    {
+      "face_id": "visitor_050",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:23:36",
+      "image_path": "logs/exits\\visitor_050_exit_2026-10-04_18-23-36.jpg"
+    },
+    {
+      "face_id": "visitor_054",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:23:38",
+      "image_path": "logs/entries\\visitor_054_entry_2026-10-04_18-23-38.jpg"
+    },
+    {
+      "face_id": "visitor_052",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:23:38",
+      "image_path": "logs/exits\\visitor_052_exit_2026-10-04_18-23-38.jpg"
+    },
+    {
+      "face_id": "visitor_055",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:23:39",
+      "image_path": "logs/entries\\visitor_055_entry_2026-10-04_18-23-39.jpg"
+    },
+    {
+      "face_id": "visitor_047",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:23:41",
+      "image_path": "logs/exits\\visitor_047_exit_2026-10-04_18-23-41.jpg"
+    },
+    {
+      "face_id": "visitor_051",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:23:42",
+      "image_path": "logs/exits\\visitor_051_exit_2026-10-04_18-23-42.jpg"
+    },
+    {
+      "face_id": "visitor_053",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:23:44",
+      "image_path": "logs/exits\\visitor_053_exit_2026-10-04_18-23-44.jpg"
+    },
+    {
+      "face_id": "visitor_056",
+      "event_type": "ENTRY",
+      "timestamp": "2026-10-04 18:23:48",
+      "image_path": "logs/entries\\visitor_056_entry_2026-10-04_18-23-48.jpg"
+    },
+    {
+      "face_id": "visitor_054",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:23:51",
+      "image_path": "logs/exits\\visitor_054_exit_flush_2026-10-04_18-23-51.jpg"
+    },
+    {
+      "face_id": "visitor_055",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:23:51",
+      "image_path": "logs/exits\\visitor_055_exit_flush_2026-10-04_18-23-51.jpg"
+    },
+    {
+      "face_id": "visitor_056",
+      "event_type": "EXIT",
+      "timestamp": "2026-10-04 18:23:51",
+      "image_path": "logs/exits\\visitor_056_exit_flush_2026-10-04_18-23-51.jpg"
+    }
+  ]
+}

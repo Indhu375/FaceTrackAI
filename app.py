@@ -1,27 +1,15 @@
 """
 app.py
 ------
-Entry point for FaceTrackAI — Phase 2.
+Entry point for FaceTrackAI — Phase 3 (Tracking, Analytics & Live Intelligence).
 
 Usage
 -----
     python app.py
     python app.py --source sample_video/input.mp4
-    python app.py --source "rtsp://user:pass@192.168.1.1/stream"
-
-The application:
-1. Loads config.json.
-2. Sets up the logger.
-3. Initialises the SQLite database.
-4. Loads YOLO (face detection).
-5. Loads ByteTracker (face tracking + temporal continuity).
-6. Loads InsightFace (face recognition / ArcFace embedding).
-7. Initialises VisitorManager (persistent identity resolution).
-8. Initialises EventManager (ENTRY/EXIT state machine & snapshot archival).
-9. Wires all modules into an end-to-end Pipeline.
-10. Processes video frames, renders preview HUD, writes output video.
-11. Records ENTRY/EXIT events into SQLite and saves face images.
-12. Releases all resources and flushes exit sessions on shutdown.
+    python app.py --report                 # Generate analytics reports and exit
+    python app.py --dashboard              # Launch live web analytics dashboard
+    python app.py --dashboard --port 8080
 """
 
 import argparse
@@ -41,6 +29,8 @@ from src.visitor_manager import VisitorManager
 from src.event_manager import EventManager
 from src.pipeline import Pipeline
 from src.video_processor import VideoProcessor
+from src.analytics import AnalyticsEngine
+from src.dashboard import DashboardServer
 
 
 # ---------------------------------------------------------------------------
@@ -48,17 +38,7 @@ from src.video_processor import VideoProcessor
 # ---------------------------------------------------------------------------
 
 def load_config(config_path: str = "config.json") -> dict:
-    """
-    Load and return config.json as a dictionary.
-
-    Parameters
-    ----------
-    config_path : str  Path to the JSON configuration file.
-
-    Returns
-    -------
-    dict  Parsed configuration.
-    """
+    """Load and return config.json as a dictionary."""
     if not os.path.exists(config_path):
         print(f"[ERROR] Configuration file not found: {config_path}")
         sys.exit(1)
@@ -79,7 +59,7 @@ def load_config(config_path: str = "config.json") -> dict:
 def parse_args() -> argparse.Namespace:
     """Parse optional command-line arguments."""
     parser = argparse.ArgumentParser(
-        description="FaceTrackAI — Intelligent Face Tracking & Unique Visitor Analytics"
+        description="FaceTrackAI — Intelligent Face Tracking, Recognition & Analytics"
     )
     parser.add_argument(
         "--source",
@@ -93,6 +73,22 @@ def parse_args() -> argparse.Namespace:
         default="config.json",
         help="Path to the configuration file (default: config.json)",
     )
+    parser.add_argument(
+        "--report",
+        action="store_true",
+        help="Generate analytics reports (CSV/JSON/HTML) and exit",
+    )
+    parser.add_argument(
+        "--dashboard",
+        action="store_true",
+        help="Launch the live web analytics dashboard",
+    )
+    parser.add_argument(
+        "--port",
+        type=int,
+        default=8000,
+        help="Port for the web dashboard (default: 8000)",
+    )
     return parser.parse_args()
 
 
@@ -105,26 +101,55 @@ def main() -> None:
 
     # 1. Load configuration
     config = load_config(args.config)
-
-    # Override video source from CLI if provided
     if args.source:
         config["video_source"] = args.source
 
     # 2. Set up logging
     log_file = config.get("logging", {}).get("log_file", "logs/events.log")
     logger = setup_logger(log_file)
+
+    # 3. Initialise database
+    db_path = config.get("database", {}).get("path", "data/visitors.db")
+    db = DatabaseManager(db_path)
+
+    # 4. Handle dedicated Dashboard mode
+    if args.dashboard:
+        logger.info("FaceTrackAI | Launching Analytics Web Dashboard")
+        server = DashboardServer(db=db, port=args.port)
+        try:
+            server.start()
+        finally:
+            db.close()
+        return
+
+    # 5. Handle dedicated Report Generation mode
+    if args.report:
+        logger.info("FaceTrackAI | Generating Analytics Reports")
+        analytics = AnalyticsEngine(db)
+        metrics = analytics.compute_metrics()
+        reports = analytics.export_all(prefix="manual")
+        print("\n=======================================================")
+        print("  FaceTrackAI Analytics Summary")
+        print(f"  Total Unique Visitors: {metrics['summary']['total_unique_visitors']}")
+        print(f"  Total Activity Events: {metrics['summary']['total_events']}")
+        print(f"  Average Dwell Time:    {metrics['summary']['avg_dwell_time_formatted']}")
+        print(f"  Visitor Return Rate:   {metrics['retention']['return_rate_percentage']}%")
+        print("-------------------------------------------------------")
+        print(f"  Visitors CSV: {reports['visitors_csv']}")
+        print(f"  Events CSV:   {reports['events_csv']}")
+        print(f"  JSON Report:  {reports['json_report']}")
+        print(f"  HTML Report:  {reports['html_report']}")
+        print("=======================================================\n")
+        db.close()
+        return
+
+    # 6. Standard Video Tracking Mode (Phase 3 Pipeline)
     logger.info("=" * 60)
-    logger.info("FaceTrackAI | Starting — Phase 2 (Tracking + Events + Analytics)")
+    logger.info("FaceTrackAI | Starting — Phase 3 (Tracking, Analytics & Live Intelligence)")
     logger.info(f"FaceTrackAI | Config: {args.config}")
     logger.info(f"FaceTrackAI | Source: {config['video_source']}")
     logger.info("=" * 60)
 
-    # 3. Initialise database
-    db_path = config.get("database", {}).get("path", "data/visitors.db")
-    logger.info(f"DATABASE | Initialising | {db_path}")
-    db = DatabaseManager(db_path)
-
-    # 4. Load YOLO face detector
     det_cfg = config.get("detection", {})
     detector = FaceDetector(
         model_path=det_cfg.get("model", "yolov8n-face.pt"),
@@ -132,23 +157,19 @@ def main() -> None:
         skip_frames=det_cfg.get("detection_skip_frames", 5),
     )
 
-    # 5. Load ByteTracker
     track_cfg = config.get("tracking", {})
     tracker = ByteTracker(
         max_missed_frames=track_cfg.get("max_missed_frames", 30),
         track_thresh=det_cfg.get("confidence_threshold", 0.5),
     )
 
-    # 6. Load InsightFace recognizer
     rec_cfg = config.get("recognition", {})
     recognizer = FaceRecognizer(
         similarity_threshold=rec_cfg.get("similarity_threshold", 0.5)
     )
 
-    # 7. Initialise visitor manager (bootstraps in-memory embeddings from DB)
     visitor_manager = VisitorManager(db=db, recognizer=recognizer)
 
-    # 8. Initialise event manager (handles ENTRY/EXIT state & saves crops)
     storage_cfg = config.get("storage", {})
     event_manager = EventManager(
         db=db,
@@ -156,7 +177,6 @@ def main() -> None:
         exit_dir=storage_cfg.get("exit_directory", "logs/exits"),
     )
 
-    # 9. Assemble end-to-end Pipeline
     pipeline = Pipeline(
         config=config,
         detector=detector,
@@ -166,7 +186,6 @@ def main() -> None:
         event_manager=event_manager,
     )
 
-    # 10. Initialise and run video processor
     processor = VideoProcessor(
         config=config,
         pipeline=pipeline,
@@ -175,9 +194,14 @@ def main() -> None:
     try:
         processor.run()
     finally:
-        # 11. Graceful shutdown
+        # Automated Phase 3 Report Generation after video run
         unique_count = visitor_manager.unique_visitor_count()
         logger.info(f"FaceTrackAI | Finished | Unique Visitors = {unique_count}")
+
+        analytics = AnalyticsEngine(db)
+        reports = analytics.export_all(prefix="auto")
+        logger.info(f"ANALYTICS | Automated reports generated: {reports['html_report']}")
+
         db.close()
         logger.info("FaceTrackAI | Shutdown complete")
 

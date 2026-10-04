@@ -1,0 +1,13 @@
+Event ID,Face ID,Event Type,Timestamp,Image Snapshot
+1,visitor_001,ENTRY,2026-10-04 17:20:55,logs/entries\visitor_001_entry_2026-10-04_17-20-55.jpg
+2,visitor_002,ENTRY,2026-10-04 17:20:56,logs/entries\visitor_002_entry_2026-10-04_17-20-56.jpg
+3,visitor_003,ENTRY,2026-10-04 17:20:57,logs/entries\visitor_003_entry_2026-10-04_17-20-57.jpg
+4,visitor_006,ENTRY,2026-10-04 17:20:59,logs/entries\visitor_006_entry_2026-10-04_17-20-59.jpg
+5,visitor_001,ENTRY,2026-10-04 17:49:42,logs/entries\visitor_001_entry_2026-10-04_17-49-42.jpg
+6,visitor_002,ENTRY,2026-10-04 17:49:42,logs/entries\visitor_002_entry_2026-10-04_17-49-42.jpg
+7,visitor_003,ENTRY,2026-10-04 17:49:43,logs/entries\visitor_003_entry_2026-10-04_17-49-43.jpg
+8,visitor_006,ENTRY,2026-10-04 17:49:44,logs/entries\visitor_006_entry_2026-10-04_17-49-44.jpg
+9,visitor_001,EXIT,2026-10-04 17:49:52,logs/exits\visitor_001_exit_flush_2026-10-04_17-49-52.jpg
+10,visitor_002,EXIT,2026-10-04 17:49:52,logs/exits\visitor_002_exit_flush_2026-10-04_17-49-52.jpg
+11,visitor_003,EXIT,2026-10-04 17:49:52,logs/exits\visitor_003_exit_flush_2026-10-04_17-49-52.jpg
+12,visitor_006,EXIT,2026-10-04 17:49:52,logs/exits\visitor_006_exit_flush_2026-10-04_17-49-52.jpg
