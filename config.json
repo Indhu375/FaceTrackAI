@@ -1,0 +1,28 @@
+{
+    "video_source": "sample_video/input.mp4",
+    "detection": {
+        "model": "yolov8n-face.pt",
+        "confidence_threshold": 0.5,
+        "detection_skip_frames": 5
+    },
+    "recognition": {
+        "similarity_threshold": 0.5
+    },
+    "tracking": {
+        "max_missed_frames": 30
+    },
+    "database": {
+        "path": "data/visitors.db"
+    },
+    "logging": {
+        "log_file": "logs/events.log"
+    },
+    "storage": {
+        "entry_directory": "logs/entries",
+        "exit_directory": "logs/exits"
+    },
+    "display": {
+        "show_window": true,
+        "save_output_video": true
+    }
+}

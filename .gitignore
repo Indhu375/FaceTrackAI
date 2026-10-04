@@ -1,0 +1,43 @@
+# FaceTrackAI — .gitignore
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Environment variables
+.env
+.env.*
+
+# Database files (keep schema, not data)
+*.db
+
+# Log files
+logs/*.log
+
+# Large model weights — download separately
+models/*.pt
+models/*.onnx
+models/*.pkl
+
+# Output videos and temporary files
+outputs/annotated/*.mp4
+outputs/annotated/*.avi
+
+# IDE / editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Pytest cache
+.pytest_cache/
